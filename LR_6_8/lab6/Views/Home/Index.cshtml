@@ -1,0 +1,34 @@
+﻿<script type="text/javascript">
+    var notepadname = "";
+notepadname = '@ViewBag.notepadname';
+</script>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" data-bind="value: Name" placeholder="Новый блокнот...">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" data-bind="click: addItem">Создать</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="btn-group" data-bind="foreach: notepads">
+        <button id="notepads" class="btn btn-default" data-bind=" text: Name, attr: { name: Name }, click: selectnote"></button>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <!--Image-->
+        <label for="content"><img data-bind="attr: { src: notepadImage }" /></label>
+        <textarea class="form-control" id="content" rows="5" data-bind="value: Content"></textarea>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default" data-bind="click: saveItem">Сохранить</button>
+        <button type="button" class="btn btn-default" data-bind="click: removeItem">Удалить</button>
+    </div>
+    <br><br>
+    <div data-bind="visible: visible() > 0, css: {'alert': visible()>0 ,'alert-success': visible() == 1, 'alert-danger': visible() == 2}, html: message">
+    </div>
+</div>
